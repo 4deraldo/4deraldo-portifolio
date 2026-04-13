@@ -32,7 +32,7 @@ export default function Projects() {
     {
       name: 'Automação de Tarefas',
       desc: 'Automação de processos repetitivos.',
-      tech: ['JavaScript'],
+      tech: ['Python'],
       github: 'https://github.com/4deraldo/AutomacaoDeTarefa',
     },
   ];
