@@ -1,13 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
 
 export default function Projects() {
-  const swiperRef = useRef();
+  const swiperRef = useRef(null);
 
   const projects = [
     {
@@ -38,95 +36,89 @@ export default function Projects() {
   ];
 
   return (
-    <section
-      id='projects'
-      className='py-24 bg-black text-white overflow-hidden'
-    >
-      <div className='max-w-6xl mx-auto px-6'>
-        <h2 className='text-4xl font-bold text-center mb-12'>Projetos</h2>
+    <section id='projects' className='py-20 sm:py-24 bg-black text-white'>
+      <div className='max-w-6xl mx-auto px-4 sm:px-6'>
+        <h2 className='text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-12'>
+          Projetos
+        </h2>
 
         <div className='relative'>
-          {/* SETA ESQUERDA */}
+          {/* SETAS */}
           <button
-            onClick={() => swiperRef.current.slidePrev()}
-            className='hidden md:flex absolute -left-8 top-1/2 -translate-y-1/2 z-10
-  w-14 h-14 flex items-center justify-center
-  bg-white/10 backdrop-blur-xl
-  border border-white/20
-  text-white rounded-full
-  hover:bg-purple-600 hover:scale-110
-  active:scale-95
-  transition-all duration-300 shadow-xl'
+            onClick={() => swiperRef.current?.slidePrev()}
+            className='hidden lg:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10
+            w-12 h-12 items-center justify-center rounded-full
+            bg-white/10 backdrop-blur border border-white/20
+            hover:bg-purple-600 transition'
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={24} />
           </button>
 
-          {/* SETA DIREITA */}
           <button
-            onClick={() => swiperRef.current.slideNext()}
-            className='hidden md:flex absolute -right-8 top-1/2 -translate-y-1/2 z-10
-  w-14 h-14 flex items-center justify-center
-  bg-white/10 backdrop-blur-xl
-  border border-white/20
-  text-white rounded-full
-  hover:bg-purple-600 hover:scale-110
-  active:scale-95
-  transition-all duration-300 shadow-xl'
+            onClick={() => swiperRef.current?.slideNext()}
+            className='hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10
+            w-12 h-12 items-center justify-center rounded-full
+            bg-white/10 backdrop-blur border border-white/20
+            hover:bg-purple-600 transition'
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={24} />
           </button>
+
+          {/* SWIPER */}
           <Swiper
-            modules={[Pagination]}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            pagination={{ clickable: true }}
-            spaceBetween={24}
+            spaceBetween={16}
             slidesPerView={1}
             breakpoints={{
+              640: { slidesPerView: 1.2 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className='pb-16 w-full'
           >
             {projects.map((proj, index) => (
               <SwiperSlide key={index}>
-                <div className='bg-gray-900 p-6 rounded-2xl h-full flex flex-col justify-between min-h-[300px]'>
-                  <div>
-                    <h3 className='text-xl font-semibold mb-2'>{proj.name}</h3>
+                <div className='min-h-[230px] sm:min-h-[250px] bg-gray-900/80 border border-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between'>
+                  <div className='flex flex-col gap-2'>
+                    <h3 className='text-lg sm:text-xl font-semibold'>
+                      {proj.name}
+                    </h3>
 
-                    <p className='text-gray-400 text-sm mb-4'>{proj.desc}</p>
+                    <p className='text-gray-400 text-sm leading-relaxed line-clamp-3'>
+                      {proj.desc}
+                    </p>
                   </div>
 
-                  <div>
-                    <div className='flex flex-wrap gap-2 mb-4'>
-                      {proj.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className='bg-purple-600 px-3 py-1 rounded-full text-xs'
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className='flex gap-3'>
-                      <a
-                        href={proj.github}
-                        target='_blank'
-                        className='border px-4 py-2 rounded-lg text-sm hover:bg-white hover:text-black transition'
+                  <div className='flex flex-wrap gap-2 mt-3'>
+                    {proj.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className='text-xs bg-purple-600/80 px-3 py-1 rounded-full'
                       >
-                        GitHub
-                      </a>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-                      {proj.demo && (
-                        <a
-                          href={proj.demo}
-                          target='_blank'
-                          className='bg-purple-600 px-4 py-2 rounded-lg text-sm hover:bg-purple-500 transition'
-                        >
-                          Demo
-                        </a>
-                      )}
-                    </div>
+                  <div className='flex gap-3 mt-4'>
+                    <a
+                      href={proj.github}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='flex-1 text-center border border-gray-700 py-2 rounded-lg text-sm hover:bg-white hover:text-black transition'
+                    >
+                      GitHub
+                    </a>
+
+                    {proj.demo && (
+                      <a
+                        href={proj.demo}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='flex-1 text-center bg-purple-600 py-2 rounded-lg text-sm hover:bg-purple-500 transition'
+                      >
+                        Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>
