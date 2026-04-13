@@ -1,6 +1,9 @@
 export default function Footer() {
   return (
-    <footer className='bg-black text-gray-400 border-t border-gray-800'>
+    <footer
+      id='contact'
+      className='bg-black text-gray-400 border-t border-gray-800'
+    >
       <div className='max-w-6xl mx-auto px-6 py-12'>
         <div className='grid md:grid-cols-3 gap-10 text-center md:text-left'>
           {/* IDENTIDADE */}
@@ -37,11 +40,6 @@ export default function Footer() {
                   Projetos
                 </a>
               </li>
-              <li>
-                <a href='#contact' className='hover:text-purple-400 transition'>
-                  Contato
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -49,7 +47,7 @@ export default function Footer() {
           <div>
             <h4 className='text-white font-semibold mb-3'>Contato</h4>
 
-            <p>Email: seuemail@email.com</p>
+            <p>Email: aderaldojr2611@gmail.com</p>
 
             <div className='flex justify-center md:justify-start gap-4 mt-4'>
               <a
@@ -60,8 +58,20 @@ export default function Footer() {
                 GitHub
               </a>
 
-              <a href='#' className='hover:text-purple-400 transition'>
+              <a
+                href='https://www.linkedin.com/in/aderaldo-costa/'
+                target='_blank'
+                className='hover:text-purple-400 transition'
+              >
                 LinkedIn
+              </a>
+              <a
+                href='https://wa.me/5521967109513?text=Olá! Vim pelo seu portfólio.'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='hover:text-purple-400 transition'
+              >
+                WhatsApp
               </a>
             </div>
           </div>
