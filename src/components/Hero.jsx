@@ -26,7 +26,6 @@ export default function Hero() {
         </p>
 
         {/* BOTÕES */}
-        {/* BOTÕES */}
         <div className='flex gap-4 justify-center mt-8 flex-wrap'>
           <a
             href='#projects'
@@ -35,9 +34,12 @@ export default function Hero() {
             Ver Projetos
           </a>
 
-          <button className='border px-6 py-3 rounded-xl hover:bg-white hover:text-black transition duration-300'>
+          <a
+            href='#contact'
+            className='border px-6 py-3 rounded-xl hover:bg-white hover:text-black transition duration-300'
+          >
             Contato
-          </button>
+          </a>
         </div>
       </motion.div>
     </section>
