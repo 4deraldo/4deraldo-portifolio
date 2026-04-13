@@ -13,19 +13,21 @@ export default function Projects() {
       desc: 'Aplicação moderna com foco em design e experiência.',
       tech: ['React', 'Tailwind'],
       github: 'https://github.com/4deraldo/4deraldo-portifolio',
-      demo: 'https://projeto-portfolio-sigma.vercel.app',
+      demo: 'https://4deraldo-portifolio.vercel.app',
     },
     {
       name: 'Simulador de Investimentos',
       desc: 'Simulação de rendimentos com aportes mensais.',
       tech: ['JavaScript', 'HTML', 'CSS'],
       github: 'https://github.com/4deraldo/projetoCalculadoraInvestimento',
+      demo: 'https://4deraldo.github.io/projetoCalculadoraInvestimento/',
     },
     {
       name: 'Sistema Veterinário',
       desc: 'Gerenciamento de atendimentos.',
       tech: ['JavaScript'],
       github: 'https://github.com/4deraldo/vetMariana',
+      demo: 'https://vet-mariana.vercel.app',
     },
     {
       name: 'Automação de Tarefas',
