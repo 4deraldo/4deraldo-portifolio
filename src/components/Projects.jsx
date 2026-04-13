@@ -20,7 +20,7 @@ export default function Projects() {
       desc: 'Simulação de rendimentos com aportes mensais.',
       tech: ['JavaScript', 'HTML', 'CSS'],
       github: 'https://github.com/4deraldo/projetoCalculadoraInvestimento',
-      demo: 'https://4deraldo.github.io/projetoCalculadoraInvestimento/',
+      demo: 'https://4deraldo.github.io/https://projeto-calculadora-investimento.vercel.app',
     },
     {
       name: 'Sistema Veterinário',
