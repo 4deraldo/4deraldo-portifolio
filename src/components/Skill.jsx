@@ -76,8 +76,10 @@ export default function InfiniteTechCarousel({
   const trilho = useMemo(() => [...items, ...items], [items]);
 
   return (
-    <div className='w-full  bg-black p-10'>
-      <h2 className='text-4xl font-bold mb-12 text-center'>Minhas Skills</h2>
+    <div className='w-full  bg-black p-10 text-white'>
+      <h2 className='text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-12'>
+        Minhas Skills
+      </h2>
       <style>{`
         @keyframes tech-carousel-scroll {
           to { transform: translateX(-50%); }
