@@ -38,7 +38,7 @@ export default function Projects() {
   ];
 
   return (
-    <section id='projects' className='py-20 sm:py-24 bg-black text-white'>
+    <section id='projects' className='py-10 sm:py-24 bg-black text-white'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6'>
         <h2 className='text-3xl sm:text-4xl font-bold text-center mb-10 sm:mb-12'>
           Projetos

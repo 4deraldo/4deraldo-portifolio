@@ -1,45 +1,132 @@
-import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 
-export default function Skills() {
-  const skills = [
-    { name: 'HTML', color: 'from-orange-500 to-red-500' },
-    { name: 'CSS', color: 'from-blue-500 to-cyan-500' },
-    { name: 'JavaScript', color: 'from-yellow-400 to-yellow-600' },
-    { name: 'React', color: 'from-cyan-400 to-blue-500' },
-    { name: 'Tailwind', color: 'from-teal-400 to-cyan-500' },
-    { name: 'SQL', color: 'from-purple-500 to-indigo-500' },
-  ];
+const TECNOLOGIAS = [
+  {
+    nome: 'HTML5',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+    textAlt: 'Ícone do HTML5',
+  },
+  {
+    nome: 'CSS3',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
+    textAlt: 'Ícone do CSS3',
+  },
+  {
+    nome: 'JavaScript',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg',
+    textAlt: 'Ícone do JavaScript',
+  },
+  {
+    nome: 'Sass',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg',
+    textAlt: 'Ícone do Sass',
+  },
+  {
+    nome: 'Bootstrap',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
+    textAlt: 'Ícone do Bootstrap',
+  },
+  {
+    nome: 'Tailwind CSS',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+    textAlt: 'Ícone do Tailwind CSS',
+  },
+  {
+    nome: 'React',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    textAlt: 'Ícone do React',
+  },
+  {
+    nome: 'SQL Server',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg',
+    textAlt: 'Ícone do SQL Server',
+  },
+  {
+    nome: 'Git',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+    textAlt: 'Ícone do Git',
+  },
+  {
+    nome: 'GitHub',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+    textAlt: 'Ícone do GitHub',
+  },
+  {
+    nome: 'Node.js',
+    icone:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    textAlt: 'Ícone do Node.js',
+  },
+];
+
+export default function InfiniteTechCarousel({
+  items = TECNOLOGIAS,
+  durationSeconds = 26,
+}) {
+  const trilho = useMemo(() => [...items, ...items], [items]);
 
   return (
-    <section id='skills' className='py-20 bg-black text-white'>
-      <div className='max-w-5xl mx-auto px-6 text-center'>
-        {/* TÍTULO */}
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='text-4xl font-bold mb-10'
-        >
-          Minhas Skills
-        </motion.h2>
+    <div className='w-full  bg-black p-10'>
+      <h2 className='text-4xl font-bold mb-12 text-center'>Minhas Skills</h2>
+      <style>{`
+        @keyframes tech-carousel-scroll {
+          to { transform: translateX(-50%); }
+        }
+        .tech-carousel-track {
+          animation: tech-carousel-scroll ${durationSeconds}s linear infinite;
+        }
+        .tech-carousel-track:hover {
+          animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .tech-carousel-track {
+            animation: none;
+          }
+        }
+      `}</style>
 
-        {/* GRID */}
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-6'>
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={`p-[2px] rounded-2xl bg-gradient-to-r ${skill.color}`}
-            >
-              <div className='bg-gray-900 p-6 rounded-2xl hover:scale-105 transition duration-300'>
-                <p className='text-lg font-semibold'>{skill.name}</p>
+      <div
+        className='relative overflow-hidden'
+        style={{
+          maskImage:
+            'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          WebkitMaskImage:
+            'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+        }}
+      >
+        <div className='tech-carousel-track flex w-max gap-4 px-4'>
+          {trilho.map((tech, index) => {
+            const duplicado = index >= items.length;
+            return (
+              <div
+                key={`${tech.nome}-${index}`}
+                aria-hidden={duplicado || undefined}
+                className='flex shrink-0 items-center gap-3 rounded-full border border-slate-800 bg-slate-900/80 px-6 py-3 shadow-sm shadow-black/20'
+              >
+                <img
+                  src={tech.icone}
+                  alt={tech.textAlt}
+                  loading='lazy'
+                  className='h-7 w-7 object-contain'
+                />
+                <span className='whitespace-nowrap font-mono text-sm text-slate-200'>
+                  {tech.nome}
+                </span>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
